@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PriceTracker extends Model
 {
-    use HasFactory;
+    protected $fillable = ['url', 'current_price', 'email'];
 }

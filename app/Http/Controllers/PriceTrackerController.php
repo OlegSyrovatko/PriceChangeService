@@ -7,16 +7,27 @@ use App\Models\PriceTracker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class PriceTrackerController extends Controller
 {
+    public function showSubscriptionForm()
+    {
+        return view('subscribe');
+    }
+
     public function subscribe(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'url' => 'required|url',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:price_trackers',
         ]);
 
+        if ($validator->fails()) {
+            return redirect('/subscribe')
+                ->withErrors($validator)
+                ->withInput();
+        }
         // Отримання ціни з оголошення на OLX (потрібно налаштувати відповідно до структури сайту)
         $response = Http::get($request->input('url'));
         $currentPrice = $this->extractPriceFromResponse($response->body());
@@ -30,8 +41,8 @@ class PriceTrackerController extends Controller
 
         // Відправлення листа підписникові (потрібно налаштувати відповідно до вашої логіки)
         $this->sendEmailNotification($tracker);
-
-        return response()->json(['message' => 'Subscription successful']);
+        return 5;
+        // return response()->json(['message' => 'Subscription successful']);
     }
 
     protected function extractPriceFromResponse($html)
