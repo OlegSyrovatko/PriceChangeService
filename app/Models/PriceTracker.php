@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PriceTracker extends Model
 {
-    protected $fillable = ['url', 'current_price', 'email'];
+    protected $fillable = ['url', 'current_price', 'email', 'is_verified'];
 }
