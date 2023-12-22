@@ -18,6 +18,7 @@ class CreatePriceTrackersTable extends Migration
             $table->string('url');
             $table->float('current_price');
             $table->string('email');
+            $table->string('token');
             $table->boolean('is_verified')->default(false);
             $table->timestamps();
         });
