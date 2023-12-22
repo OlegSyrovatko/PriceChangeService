@@ -7,4 +7,6 @@ Route::get('/subscribe', [PriceTrackerController::class, 'showSubscriptionForm']
 Route::get('/', [PriceTrackerController::class, 'showSubscriptionForm']);
 Route::post('/subscribe', [PriceTrackerController::class, 'subscribe']);
 
-Route::get('/verify-email/{token}', 'EmailVerificationController@verifyEmail');
+
+Route::get('/verify-email/{token}', 'App\Http\Controllers\EmailVerificationController@verifyEmail');
+
