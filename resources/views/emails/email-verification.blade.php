@@ -1,3 +1,3 @@
-<p>Дякуємо за реєстрацію!</p>
-<p>Перейдіть за посиланням нижче для підтвердження вашої електронної адреси:</p>
-<p><a href="{{ $verificationLink }}">Підтвердити електронну адресу</a></p>
+<p>Thank you for registering!</p>
+<p>Follow the link below to verify your email address:</p>
+<p><a href="{{ $verificationLink }}">Confirm email address</a></p>

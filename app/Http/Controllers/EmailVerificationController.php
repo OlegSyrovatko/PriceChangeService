@@ -10,21 +10,19 @@ class EmailVerificationController extends Controller
 {
     public function verifyEmail($token)
     {
-        // Знайти запис за токеном
+        // Find a record by token
         $priceTracker = PriceTracker::where('token', $token)->first();
 
-        // Перевірити, чи знайдено запис та чи не підтверджено вже
+        // Check if the record is found and not already confirmed
         if ($priceTracker && !$priceTracker->is_verified) {
-            // Змінити значення is_verified на true
+            // Change the value of is_verified to true
             $priceTracker->update(['is_verified' => true]);
 
-            // Додаткова логіка (якщо потрібно)
-
-            // Повідомлення про успішне підтвердження
+            // Notification of successful verification
             return view('verification.success');
         }
 
-        // Якщо не знайдено або вже підтверджено, відобразити відповідне повідомлення
+        // If not found or already confirmed, display appropriate message
         return view('verification.error');
     }
 }

@@ -1,64 +1,61 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+### PriceChangeService Overview
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Description:**
+The PriceChangeService is a web service designed to monitor and track changes in the prices of advertisements on OLX. It provides a convenient way for users to subscribe to price changes for specific advertisements and receive email notifications when the prices are updated.
 
-## About Laravel
+**Key Features:**
+1. **Subscription to Price Changes:**
+   Users can subscribe to receive notifications about changes in the price of a particular advertisement. To subscribe, they need to provide the advertisement link and their email address.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+2. **Price Tracking:**
+   The service actively monitors the price of the subscribed advertisements and automatically tracks any changes.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+3. **Email Notifications:**
+   Upon successful subscription and detection of a price change, the service sends email notifications to the specified email address.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+4. **Programming Language:**
+   The PriceChangeService is implemented using the PHP programming language.
 
-## Learning Laravel
+**Implementation Details:**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **PriceHelper.php (Location: PhpstormProjects\PriceChangeService\app\Helpers\PriceHelper.php):**
+  This file is responsible for parsing the web page of the advertisement to retrieve the current price.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Console Commands:**
+  - `Kernel.php (Location: PhpstormProjects\PriceChangeService\app\Console\Kernel.php):`
+    The console kernel that schedules and manages the execution of console commands.
+  - `MyCustomCommand.php (Location: PhpstormProjects\PriceChangeService\app\Console\Commands\MyCustomCommand.php):`
+    Custom console command(s) related to the functionality of the service.
 
-## Laravel Sponsors
+- **Controllers (Location: PhpstormProjects\PriceChangeService\app\Http\Controllers\):**
+  - `EmailVerificationController.php`
+  - `PriceTrackerController.php`
+  - `Controller.php`
+  These controllers handle the HTTP requests, including subscription requests and email verification.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- **Mail (Location: PhpstormProjects\PriceChangeService\app\Mail\):**
+  - `EmailNotificationDeleted.php`
+  - `EmailNotification.php`
+  - `EmailVerification.php`
+  Classes representing email notifications and verification emails.
 
-### Premium Partners
+- **Models (Location: PhpstormProjects\PriceChangeService\app\Models\):**
+  - `PriceTracker.php`
+  Represents the model for tracking the price changes of advertisements.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- **Database Migration (Location: PhpstormProjects\PriceChangeService\app\Models\2023_12_21_182636_create_price_trackers_table.php):**
+  Migration file for creating the database table related to price trackers.
 
-## Contributing
+- **Views (Location: PhpstormProjects\PriceChangeService\resources\views\):**
+  - `subscribe.blade.php`
+  - `emails\email-notification.blade.php`
+  - `emails\email-notification-deleted.blade.php`
+  - `emails\email-verification.blade.php`
+  - `verification\success.blade.php`
+  - `verification\error.blade.php`
+  Blade templates for rendering HTML views related to subscription, email notifications, and email verification.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Routes (Location: PhpstormProjects\PriceChangeService\routes\web.php):**
+  Defines the web routes for handling subscription, verification, and other related functionalities.
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Note:** Ensure that you keep your README.md file updated with any changes to the service, and provide clear instructions on how users can interact with and integrate the PriceChangeService into their projects.
