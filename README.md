@@ -70,13 +70,13 @@ To run the tests, you can use the following commands in your terminal:
 #### 1. Subscription Form Display Test
 
 - **Test Description:** Verifies that the subscription form is displayed correctly.
-- **Test Command:** `php artisan test --filter it_displays_subscription_form`
+- **Test Command:** ``` php artisan test --filter it_displays_subscription_form```
 - **Expected Result:** The test should pass, indicating that the subscription form is accessible and returns a status code of 200.
 
 #### 2. Subscription and Email Notification Test
 
 - **Test Description:** Validates the subscription process and email notification functionality.
-- **Test Command:** `php artisan test --filter it_subscribes_user_and_sends_email_notification`
+- **Test Command:** ``` php artisan test --filter it_subscribes_user_and_sends_email_notification```
 - **Expected Result:** The test should pass, confirming that users can successfully subscribe, the data is stored in the database, and an email notification is sent.
 
 ### MyCustomCommandTest
@@ -84,8 +84,21 @@ To run the tests, you can use the following commands in your terminal:
 - This test suite includes tests for the `MyCustomCommand` command in the Laravel application. The `MyCustomCommand` command is responsible for handling price changes in the application and sending email notifications accordingly.
 
 - Run only the MyCustomCommandTest
+```bash
 php artisan test --filter MyCustomCommandTest
+```
 
+### Testing PriceHelper
+
+We have a test suite for the `PriceHelper` class, which is responsible for extracting prices from advertisement pages. This test ensures that the method `extractPriceFromResponse` correctly parses HTML content and returns the expected price.
+
+#### How to Run the Test
+
+To run the test for `PriceHelper`, use the following command in your terminal:
+
+```bash
+php artisan test --filter PriceHelperTest
+```
 
 ```bash
 # Run all tests
