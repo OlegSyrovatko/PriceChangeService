@@ -59,3 +59,20 @@ The PriceChangeService is a web service designed to monitor and track changes in
   Defines the web routes for handling subscription, verification, and other related functionalities.
 
 **Note:** Ensure that you keep your README.md file updated with any changes to the service, and provide clear instructions on how users can interact with and integrate the PriceChangeService into their projects.
+
+
+## Tests
+
+### PriceTrackerController
+
+#### 1. Subscription Form Display Test
+
+- **Test Description:** Verifies that the subscription form is displayed correctly.
+- **Test Command:** `php artisan test --filter it_displays_subscription_form`
+- **Expected Result:** The test should pass, indicating that the subscription form is accessible and returns a status code of 200.
+
+#### 2. Subscription and Email Notification Test
+
+- **Test Description:** Validates the subscription process and email notification functionality.
+- **Test Command:** `php artisan test --filter it_subscribes_user_and_sends_email_notification`
+- **Expected Result:** The test should pass, confirming that users can successfully subscribe, the data is stored in the database, and an email notification is sent.
