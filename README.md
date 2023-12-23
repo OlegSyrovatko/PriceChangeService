@@ -62,6 +62,8 @@ The PriceChangeService is a web service designed to monitor and track changes in
 
 
 ## Tests
+To run the tests, you can use the following commands in your terminal:
+
 
 ### PriceTrackerController
 
@@ -76,3 +78,19 @@ The PriceChangeService is a web service designed to monitor and track changes in
 - **Test Description:** Validates the subscription process and email notification functionality.
 - **Test Command:** `php artisan test --filter it_subscribes_user_and_sends_email_notification`
 - **Expected Result:** The test should pass, confirming that users can successfully subscribe, the data is stored in the database, and an email notification is sent.
+
+### MyCustomCommandTest
+
+- This test suite includes tests for the `MyCustomCommand` command in the Laravel application. The `MyCustomCommand` command is responsible for handling price changes in the application and sending email notifications accordingly.
+
+- Run only the MyCustomCommandTest
+php artisan test --filter MyCustomCommandTest
+
+
+```bash
+# Run all tests
+php artisan test
+
+# Run only the MyCustomCommandTest
+php artisan test --filter MyCustomCommandTest
+
