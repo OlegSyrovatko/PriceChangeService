@@ -17,6 +17,9 @@
         <testsuite name="Helpers">
             <directory suffix="Test.php">./tests/Helpers</directory>
         </testsuite>
+        <testsuite name="TestEmail">
+            <directory suffix="Test.php">./tests/TestEmail</directory>
+        </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>

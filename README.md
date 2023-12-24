@@ -100,10 +100,26 @@ To run the test for `PriceHelper`, use the following command in your terminal:
 php artisan test --filter PriceHelperTest
 ```
 
+### Email Verification Test
+This PHPUnit test ensures that the user's email is successfully verified using the email verification controller.
+
+Test Overview
+- **Setup**: Create a test record in the database representing a price tracker with an unverified email.
+
+- **Action**: Call the verifyEmail controller method with the test record's token.
+
+- **Verification**:
+Assert that the response is a successful view of the verification success page.
+Assert that the corresponding record in the database is marked as verified.
+
+#### Run the test using the following command:
+```bash
+php artisan test --filter EmailVerificationTest
+```
+
+
 ```bash
 # Run all tests
 php artisan test
 
-# Run only the MyCustomCommandTest
-php artisan test --filter MyCustomCommandTest
 
