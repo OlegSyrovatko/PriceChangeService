@@ -13,8 +13,8 @@ use App\Mail\EmailNotificationDeleted;
 class MyCustomCommand extends Command
 {
 
-    protected $signature = 'myCustomCommand';
-
+    // protected $signature = 'myCustomCommand';
+    protected $signature = 'myCustomCommand:update';
     protected $description = 'MyCustomCommand';
 
     public function __construct()

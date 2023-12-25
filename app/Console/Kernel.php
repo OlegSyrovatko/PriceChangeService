@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
 
-        $schedule->command('MyCustomCommand')->everyMinute();
+        $schedule->command('myCustomCommand:update')->everyMinute();
     }
 
     /**

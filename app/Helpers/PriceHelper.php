@@ -8,10 +8,15 @@ class PriceHelper
 {
     public static function extractPriceFromResponse($url)
     {
-        $response = Http::get($url);
-        $html = $response->getBody()->getContents();
+        try {
+            $response = Http::get($url);
+            $html = $response->getBody()->getContents();
+        } catch (\Exception $e) {
+            // Handle the error, for example, output it to the logs
+            Log::error('Error fetching URL: ' . $e->getMessage());
+        }
 
-        // Тепер ви можете зробити щось з HTML, наприклад, вивести його
+        // Now you can do something with the HTML, like output it
         $escapedHtml = htmlspecialchars($html);
 
         $html = response($escapedHtml)->header('Content-Type', 'text/html');
