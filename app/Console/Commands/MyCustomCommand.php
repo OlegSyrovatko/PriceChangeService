@@ -24,7 +24,7 @@ class MyCustomCommand extends Command
 
     public function handle()
     {
-
+        $urls = [];
         $data = DB::table('price_trackers')
             ->select('url', 'current_price', 'email')
             ->where('is_verified', 1)
@@ -34,8 +34,15 @@ class MyCustomCommand extends Command
         foreach ($data as $record) {
             $url = $record->url;
 
-            // Obtaining the price using the specified method
-            $currentPrice = PriceHelper::extractPriceFromResponse($url);
+            if (array_key_exists($url, $urls)) {
+                $currentPrice = $urls[$url];
+            } else {
+                // Obtaining the price using the specified method
+                $currentPrice = PriceHelper::extractPriceFromResponse($url);
+
+                // Save Price
+                $urls[$url] = $currentPrice;
+            }
 
             // Price comparison
             if ($currentPrice != $record->current_price) {
